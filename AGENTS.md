@@ -224,4 +224,4 @@ STATUSを現在の姿へ書き直す。
 
 ## 安全性
 
-[docs/SECURITY.md](./docs/SECURITY.md)を守る。`.env`、APIキー、OAuth JSON、token、password、秘密鍵、支払い情報、実在利用者のデータ、権利不明の素材をGitへ入れない。
+[docs/SECURITY.md](./docs/SECURITY.md)を守る。`.env`、APIキー、OAuth JSON、トークン、パスワード、秘密鍵、支払い情報、実在利用者のデータ、権利不明の素材をGitへ入れない。
