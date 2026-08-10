@@ -1,0 +1,52 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+credentials.json
+client_secret*.json
+oauth-client*.json
+oauth-token*.json
+token.json
+tokens.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local data and private assets
+data/private/
+assets/private/
+local/
+_private/
+_backups/
+
+# Dependencies and virtual environments
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+vendor/
+
+# Build, test, cache, and generated output
+dist/
+build/
+target/
+coverage/
+.cache/
+.tmp/
+tmp/
+temp/
+logs/
+*.log
+outputs/
+renders/
+exports/
+
+# OS and editor-local files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*.local
