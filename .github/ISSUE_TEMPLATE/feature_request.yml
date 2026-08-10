@@ -1,0 +1,67 @@
+name: 機能・改善提案
+description: 目的、完成条件、版への影響を整理する
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 解決したい問題
+      description: 機能名より先に、誰が何に困るかを書く
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: 望む結果
+      description: 利用者が何を完了できればよいか
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受け入れ条件
+      description: どんな入力・操作・結果なら「できた」と判断できるか
+    validations:
+      required: true
+  - type: dropdown
+    id: goal_relation
+    attributes:
+      label: 最終目標との関係
+      options:
+        - 最終目標に必要
+        - 既存機能の改善
+        - 将来候補
+        - 不明・要相談
+    validations:
+      required: true
+  - type: input
+    id: release
+    attributes:
+      label: 候補の版
+      description: 未判断でもよい
+  - type: dropdown
+    id: baseline_change
+    attributes:
+      label: 承認済み版目標への影響
+      options:
+        - 変更しない
+        - 現在の版へ追加する提案
+        - 後の版へ移す・削除する提案
+        - 不明・要相談
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 代案・回避策
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: スコープ確認
+      options:
+        - label: 既存の最終目標を黙って縮小する提案ではありません
+          required: true
+        - label: 承認済みの版目標を変更する場合は、人の承認を得ます
+          required: true

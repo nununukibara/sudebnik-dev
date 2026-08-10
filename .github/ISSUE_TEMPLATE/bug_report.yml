@@ -1,0 +1,59 @@
+name: 不具合報告
+description: 再現手順と期待結果を残す
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: 秘密情報、個人情報、実データは貼らないでください。
+  - type: input
+    id: version
+    attributes:
+      label: 版
+      description: 画面や版の正本に表示された値。分からなければ「不明」
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 環境
+      description: OS、ブラウザ、端末、入力形式など
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+      description: 最小の手順を番号付きで
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待した結果
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 実際の結果
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: 影響
+      description: 作業を続けられるか、データや安全性への影響があるか
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 安全に共有できる証拠
+      description: 秘密・個人情報を除いたログ、画像、短いサンプル
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: 確認
+      options:
+        - label: 秘密情報や個人情報を含めていません
+          required: true
