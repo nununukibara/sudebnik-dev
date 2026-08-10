@@ -1,0 +1,49 @@
+# 公開前検査を自動で走らせる。
+#
+# 目的は「人が忘れても、秘密情報や壊れたリンクがそのまま残らないようにする」こと。
+# tools/check-template.mjs と同じものを、pushとPull Requestのたびに実行する。
+#
+# 落ちたときは、GitHubの Actions タブでこのジョブを開くと理由が日本語で出る。
+#
+# 注意: このワークフローは「テンプレートの健全性」しか見ていない。
+# あなたのプロジェクトのテストは、下の「あなたのテスト」に足すこと。
+
+name: check
+
+on:
+  push:
+  pull_request:
+
+# 既定では読み取りだけ許可する。書き込みが必要になるまで広げない。
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: Nodeを用意
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # 秘密値らしい文字列、個人PCの絶対パス、リンク切れ、
+      # Gitへ入れてはいけないファイル名、必須文書の有無、LICENSEの有無を見る。
+      # 警告（LICENSE未選択など）では落ちない。エラーのときだけ落ちる。
+      - name: 公開前検査
+        run: node tools/check-template.mjs
+
+      # ── あなたのテスト ─────────────────────────────
+      # プロジェクトのテストを用意したら、下のコメントを外して書き換える。
+      # 言語やツールは問わない。テストが失敗したときに 0 以外で終わればよい。
+      #
+      # - name: 依存を入れる
+      #   run: npm ci
+      #
+      # - name: テスト
+      #   run: npm test
+      # ─────────────────────────────────────────────

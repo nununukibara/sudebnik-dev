@@ -156,4 +156,8 @@ node tools/check-template.mjs
 
 検査するもの: 文書間のリンク切れ、必須文書の有無、秘密値らしい文字列（GitHub・Googleのトークン、`sk-`で始まる鍵、秘密鍵のPEM）、個人PCの絶対パス、Gitへ入れてはいけないファイル名、LICENSEの有無。
 
+**同じ検査はGitHubでも自動で走ります。**[.github/workflows/check.yml](./.github/workflows/check.yml)が、pushとPull Requestのたびに実行します。**Node.jsが手元に無くても構いません。**結果はGitHubのActionsタブで見られます。LICENSE未選択のような警告では落ちず、エラーのときだけ落ちます。
+
+自分のプロジェクトのテストも、このワークフローへ足せます。書く場所はファイル内に用意してあります。
+
 **これは最後の網であって、[docs/SECURITY.md](./docs/SECURITY.md)の代わりにはなりません。**検査を通っても、実データや権利の分からない素材は自分で確認してください。
