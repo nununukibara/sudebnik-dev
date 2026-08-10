@@ -24,15 +24,9 @@
 
 ## 最初に読む順
 
-1. HANDOFF.md（この文書）
-2. [STATUS.md](./STATUS.md)
-3. [AGENTS.md](./AGENTS.md)
-4. [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md)
-5. [docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md)
-6. [docs/RESOURCES.md](./docs/RESOURCES.md)
-7. 関係する設計・検証文書と実コード
+[README.md](./README.md)の「読む順」が正本です。この文書はその1番目にあたります。
 
-二度目以降はSTATUSから始めます。
+二度目以降は[STATUS.md](./STATUS.md)から始めます。
 
 ## 開発環境
 

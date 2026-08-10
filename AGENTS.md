@@ -16,13 +16,10 @@
 
 ## 初参加時の必須手順
 
-1. [HANDOFF.md](./HANDOFF.md)を全文読む
-2. [STATUS.md](./STATUS.md)を読む
-3. この文書を全文読む
-4. [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md)、[docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md)、[docs/VERSIONING.md](./docs/VERSIONING.md)を確認する
-5. [docs/RESOURCES.md](./docs/RESOURCES.md)を読み、作業中の別AIと必要なリソースが実際に利用可能か確認する
-6. `git status`、現在のブランチ、直近の履歴、実コードを確認する
-7. 未回答の重要事項がある場合、実装せず人へ質問する
+1. [README.md](./README.md)の「読む順」に従って文書を読む
+2. [docs/RESOURCES.md](./docs/RESOURCES.md)で、作業中の別AIと必要なリソースが実際に利用可能か確認する
+3. `git status`、現在のブランチ、直近の履歴、実コードを確認する
+4. 未回答の重要事項がある場合、実装せず人へ質問する
 
 質問は一度に1〜3件を目安にする。専門用語だけで聞かず、選択肢と影響を短く説明する。
 
