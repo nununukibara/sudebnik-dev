@@ -30,7 +30,9 @@ AIと相談しながら、開発経験が少なくても「何を作るか」か
 | 7 | [docs/RESOURCES.md](./docs/RESOURCES.md) | 初参加時。使える人・AI・ツール |
 | 8 | 関係する設計・検証文書と実コード | 作業内容に応じて |
 
-**二度目以降は 2 のSTATUSだけで始められます。**規則や目的が変わったときだけ 3〜7 を読み直します。
+**二度目以降は 2 のSTATUSだけで始められます。**規則や目的が変わったときだけ 3・5〜7 を読み直します。
+
+**4のSECURITYだけは別です。**commitする前と公開する前には、毎回その「チェック」の節を見ます。一度読んで終わりにしません。
 
 各文書に何を書くかは[文書の役割](#文書の役割)にあります。
 
@@ -112,21 +114,23 @@ AIと相談しながら、開発経験が少なくても「何を作るか」か
 
 ## 文書の役割
 
-| 文書 | 何を書くか | 更新方法 |
-|---|---|---|
-| [HANDOFF.md](./HANDOFF.md) | 初参加AIが最初に知る安定情報 | 仕様が変わったとき書き直す |
-| [STATUS.md](./STATUS.md) | 現在地、次の一歩、未決事項 | 毎回書き直す |
-| [AGENTS.md](./AGENTS.md) | AIが従う作業規則 | 規則が変わったとき書き直す |
-| [WORKLOG.md](./WORKLOG.md) | 誰が、いつ、なぜ、何をして検証したか | 追記のみ |
-| [ROADMAP.md](./ROADMAP.md) | 最終目標へ至る版と順序 | 計画変更時に書き直す |
-| [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md) | 利用者、目的、使い方、制約、最終成功条件 | 合意後の正本 |
-| [docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md) | 機能・品質要件と受け入れ条件 | 現在の合意へ書き直す |
-| [docs/VERSIONING.md](./docs/VERSIONING.md) | 版分割とリリース判定 | 規則の正本 |
-| [docs/RESOURCES.md](./docs/RESOURCES.md) | 利用できる人・AI・ツール・外部環境と分担 | 現在の利用可能性へ書き直す |
-| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | 構造、データ、外部依存、境界 | 現在の設計へ書き直す |
-| [docs/TESTING.md](./docs/TESTING.md) | 自動・手動・利用者確認の方法 | 現在の検証計画へ書き直す |
-| [docs/SECURITY.md](./docs/SECURITY.md) | 秘密情報、実データ、公開前確認 | 安全規則の正本 |
-| [docs/VIDEO_TOOL_INTAKE.md](./docs/VIDEO_TOOL_INTAKE.md) | 動画・音声ツールで追加確認する項目 | 該当時だけ使用 |
+**どう更新するか**は[AGENTS.md](./AGENTS.md)の「文書の性質」が正本です。書き直す文書と、追記だけの文書があります。
+
+| 文書 | 何を書くか |
+|---|---|
+| [HANDOFF.md](./HANDOFF.md) | 初参加AIが最初に知る安定情報 |
+| [STATUS.md](./STATUS.md) | 現在地、次の一歩、未決事項 |
+| [AGENTS.md](./AGENTS.md) | AIが従う作業規則 |
+| [WORKLOG.md](./WORKLOG.md) | 誰が、いつ、なぜ、何をして検証したか |
+| [ROADMAP.md](./ROADMAP.md) | 最終目標へ至る版と順序 |
+| [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md) | 利用者、目的、使い方、制約、最終成功条件 |
+| [docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md) | 機能・品質要件と受け入れ条件 |
+| [docs/VERSIONING.md](./docs/VERSIONING.md) | 版分割とリリース判定 |
+| [docs/RESOURCES.md](./docs/RESOURCES.md) | 利用できる人・AI・ツール・外部環境と分担 |
+| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | 構造、データ、外部依存、境界 |
+| [docs/TESTING.md](./docs/TESTING.md) | 自動・手動・利用者確認の方法 |
+| [docs/SECURITY.md](./docs/SECURITY.md) | 秘密情報、実データ、公開前確認 |
+| [docs/VIDEO_TOOL_INTAKE.md](./docs/VIDEO_TOOL_INTAKE.md) | 動画・音声ツールで追加確認する項目 |
 
 ## 状態を混同しない
 
