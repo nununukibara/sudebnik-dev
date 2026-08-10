@@ -45,10 +45,15 @@ try {
   errors.push(`git ls-files を実行できません: ${error.message}`);
 }
 
+// .gitignore の「Secrets and local configuration」と対応させる。
+// 片方だけへ追加すると、除外しているつもりのものを検査が見逃す。
 const forbiddenTrackedNames = [
-  /(^|\/)\.env(?:\.|$)/iu,
+  // .env.example / .env.sample / .env.template は架空値を置く見本なので除く
+  // （.gitignore の !.env.example と docs/SECURITY.md の指示に合わせる）
+  /(^|\/)\.env(?:$|\.(?!example$|sample$|template$))/iu,
   /(^|\/)(?:credentials|token|tokens)\.json$/iu,
   /(^|\/)client_secret[^/]*\.json$/iu,
+  /(^|\/)oauth-(?:client|token)[^/]*\.json$/iu,
   /\.(?:pem|key|p12|pfx)$/iu,
 ];
 
