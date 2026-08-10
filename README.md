@@ -24,12 +24,15 @@ AIと相談しながら、開発経験が少なくても「何を作るか」か
 | 1 | [HANDOFF.md](./HANDOFF.md) | 初参加時。プロジェクトの前提 |
 | 2 | [STATUS.md](./STATUS.md) | 毎回。現在地 |
 | 3 | [AGENTS.md](./AGENTS.md) | 初参加時。作業規則 |
-| 4 | [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md) | 初参加時。目的と最終目標 |
-| 5 | [docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md) | 初参加時。合意済みの要件 |
-| 6 | [docs/RESOURCES.md](./docs/RESOURCES.md) | 初参加時。使える人・AI・ツール |
-| 7 | 関係する設計・検証文書と実コード | 作業内容に応じて |
+| 4 | [docs/SECURITY.md](./docs/SECURITY.md) | 初参加時。**Gitへ入れてはいけないもの。commitの前に必ず** |
+| 5 | [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md) | 初参加時。目的と最終目標 |
+| 6 | [docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md) | 初参加時。合意済みの要件 |
+| 7 | [docs/RESOURCES.md](./docs/RESOURCES.md) | 初参加時。使える人・AI・ツール |
+| 8 | 関係する設計・検証文書と実コード | 作業内容に応じて |
 
-**二度目以降は 2 のSTATUSだけで始められます。**規則や目的が変わったときだけ 3〜6 を読み直します。
+**二度目以降は 2 のSTATUSだけで始められます。**規則や目的が変わったときだけ 3〜7 を読み直します。
+
+各文書に何を書くかは[文書の役割](#文書の役割)にあります。
 
 ## 最初の使い方
 
@@ -95,6 +98,7 @@ AIと相談しながら、開発経験が少なくても「何を作るか」か
 | | 貼るもの | 理由 |
 |---|---|---|
 | 最初に | [AGENTS.md](./AGENTS.md) | AIが従う規則。これが無いと以降が効きません |
+| 次に | [docs/SECURITY.md](./docs/SECURITY.md) | **Gitへ入れてはいけないもの。事故が一番重いので先に渡します** |
 | 次に | [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md) | 埋めかけで構いません。空欄はAIが質問します |
 | 版の相談をするとき | [docs/VERSIONING.md](./docs/VERSIONING.md) | 版の分け方と正式版の判定 |
 | 検証の相談をするとき | [docs/TESTING.md](./docs/TESTING.md) | 確認の種類と完了の条件 |
@@ -144,8 +148,12 @@ AIと相談しながら、開発経験が少なくても「何を作るか」か
 
 公開・再利用を許可する場合は、公開前にリポジトリのライセンスを人が選んでください。
 
-Node.jsを利用できる場合、次で相対リンクと公開時の基本的な危険を検査できます。
+Node.jsを利用できる場合、次を**公開の前とcommitの前に**実行します。
 
 ```powershell
 node tools/check-template.mjs
 ```
+
+検査するもの: 文書間のリンク切れ、必須文書の有無、秘密値らしい文字列（GitHub・Googleのトークン、`sk-`で始まる鍵、秘密鍵のPEM）、個人PCの絶対パス、Gitへ入れてはいけないファイル名、LICENSEの有無。
+
+**これは最後の網であって、[docs/SECURITY.md](./docs/SECURITY.md)の代わりにはなりません。**検査を通っても、実データや権利の分からない素材は自分で確認してください。

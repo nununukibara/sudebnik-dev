@@ -39,19 +39,7 @@
 
 ## ドキュメント地図
 
-| 文書 | 正本として持つ情報 |
-|---|---|
-| [STATUS.md](./STATUS.md) | 現在地、次の一歩、対応待ち、判断待ち、中断 |
-| [AGENTS.md](./AGENTS.md) | AIと人の作業規則 |
-| [ROADMAP.md](./ROADMAP.md) | 最終目標へ至る版と順序 |
-| [WORKLOG.md](./WORKLOG.md) | 作業履歴と決定理由 |
-| [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md) | 目的、利用者、最終成功条件 |
-| [docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md) | 合意済み要件と受け入れ条件 |
-| [docs/VERSIONING.md](./docs/VERSIONING.md) | 版分割と正式版の判定規則 |
-| [docs/RESOURCES.md](./docs/RESOURCES.md) | 利用可能な人・AI・ツール・外部環境と現在の分担 |
-| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | 現在の構造とデータ境界 |
-| [docs/TESTING.md](./docs/TESTING.md) | 自動・手動・利用者確認 |
-| [docs/SECURITY.md](./docs/SECURITY.md) | 秘密情報、公開、データ保護 |
+[README.md](./README.md)の「文書の役割」が正本です。ここへ書き写しません。
 
 ## ハマりやすい点
 
