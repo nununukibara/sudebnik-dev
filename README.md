@@ -130,7 +130,6 @@ AIと相談しながら、開発経験が少なくても「何を作るか」か
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | 構造、データ、外部依存、境界 |
 | [docs/TESTING.md](./docs/TESTING.md) | 自動・手動・利用者確認の方法 |
 | [docs/SECURITY.md](./docs/SECURITY.md) | 秘密情報、実データ、公開前確認 |
-| [docs/VIDEO_TOOL_INTAKE.md](./docs/VIDEO_TOOL_INTAKE.md) | 動画・音声ツールで追加確認する項目 |
 
 ## 状態を混同しない
 
