@@ -5,18 +5,31 @@ import {dirname, extname, isAbsolute, join, normalize, relative, resolve} from '
 const root = resolve(import.meta.dirname, '..');
 const errors = [];
 const warnings = [];
+const knownArguments = new Set(['--require-tracked']);
+const argumentsFromCli = process.argv.slice(2);
+const requireTracked = argumentsFromCli.includes('--require-tracked');
+
+for (const argument of argumentsFromCli) {
+  if (!knownArguments.has(argument)) {
+    errors.push(`不明なオプションです: ${argument}`);
+  }
+}
 
 const requiredFiles = [
   'README.md',
   'HANDOFF.md',
   'STATUS.md',
   'AGENTS.md',
+  'CLAUDE.md',
+  'GEMINI.md',
   'ROADMAP.md',
   'WORKLOG.md',
+  '.github/copilot-instructions.md',
   'docs/PROJECT_BRIEF.md',
   'docs/REQUIREMENTS.md',
   'docs/VERSIONING.md',
   'docs/RESOURCES.md',
+  'docs/AI_COMPATIBILITY.md',
   'docs/ARCHITECTURE.md',
   'docs/TESTING.md',
   'docs/SECURITY.md',
@@ -25,6 +38,29 @@ const requiredFiles = [
 for (const file of requiredFiles) {
   if (!existsSync(join(root, file))) {
     errors.push(`必須ファイルがありません: ${file}`);
+  }
+}
+
+// AIごとの入口は、AGENTS.mdの複製ではなく薄いimportだけに保つ。
+// 内容をコピーすると、片方だけ古くなったり、複数読込時に規則が競合したりする。
+const instructionAdapters = new Map([
+  ['CLAUDE.md', '@AGENTS.md'],
+  ['GEMINI.md', '@./AGENTS.md'],
+  [
+    '.github/copilot-instructions.md',
+    'For every task in this repository, open and read the repository-root AGENTS.md first. Treat it as the only canonical instructions and follow it before acting.',
+  ],
+]);
+
+for (const [file, expected] of instructionAdapters) {
+  const absolute = join(root, file);
+  if (!existsSync(absolute)) continue;
+
+  const actual = readFileSync(absolute, 'utf8').trim();
+  if (actual !== expected) {
+    errors.push(
+      `${file}はAI別の薄い入口だけにしてください。期待値: ${expected}`,
+    );
   }
 }
 
@@ -43,6 +79,28 @@ try {
     .filter(Boolean);
 } catch (error) {
   errors.push(`git ls-files を実行できません: ${error.message}`);
+}
+
+if (requireTracked) {
+  let cachedFiles = [];
+  try {
+    cachedFiles = execFileSync('git', ['ls-files', '--cached'], {
+      cwd: root,
+      encoding: 'utf8',
+    })
+      .split(/\r?\n/u)
+      .map((line) => line.trim().replaceAll('\\', '/'))
+      .filter(Boolean);
+  } catch (error) {
+    errors.push(`追跡済みファイルの確認を実行できません: ${error.message}`);
+  }
+
+  const cachedFileSet = new Set(cachedFiles);
+  for (const file of requiredFiles) {
+    if (existsSync(join(root, file)) && !cachedFileSet.has(file)) {
+      errors.push(`必須ファイルがGitの追跡対象に入っていません: ${file}`);
+    }
+  }
 }
 
 // .gitignore の「Secrets and local configuration」と対応させる。
@@ -161,6 +219,6 @@ if (errors.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `OK: ${trackedFiles.length}個のGit管理対象ファイルを確認し、公開を止める問題は見つかりませんでした。`,
+    `OK: Git管理対象・未追跡の${trackedFiles.length}個を確認し、公開を止める問題は見つかりませんでした。`,
   );
 }
