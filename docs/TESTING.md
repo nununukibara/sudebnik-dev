@@ -17,7 +17,7 @@
 
 [.github/workflows/check.yml](../.github/workflows/check.yml)で、公開前検査と自分のテストをGitHub上で実行できます。
 
-**既定は手動起動です。**自動で走らせるか、都度手動にするか、使わないかは判断者が決めます。**GitHub Actionsには実行時間の枠があり、非公開リポジトリでは超過分が課金される**ためです。選び方は[README.md](../README.md)、決めた内容は[RESOURCES.md](./RESOURCES.md)の`TOOL-04`へ記録します。
+**既定は手動起動です。**自動で走らせるか、都度手動にするか、使わないかは判断者が決めます。選び方と費用・利用枠の確認方法は[README.md](../README.md#github上で検査を走らせるか決める)、決めた内容は[RESOURCES.md](./RESOURCES.md)の`TOOL-04`へ記録します。
 
 自分のプロジェクトのテストは、`check.yml`の「あなたのテスト」へ足します。
 
