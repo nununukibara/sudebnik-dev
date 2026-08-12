@@ -34,8 +34,8 @@ try {
     'git',
     ['ls-files', '--cached', '--others', '--exclude-standard'],
     {
-    cwd: root,
-    encoding: 'utf8',
+      cwd: root,
+      encoding: 'utf8',
     },
   )
     .split(/\r?\n/u)
@@ -48,9 +48,9 @@ try {
 // .gitignore の「Secrets and local configuration」と対応させる。
 // 片方だけへ追加すると、除外しているつもりのものを検査が見逃す。
 const forbiddenTrackedNames = [
-  // .env.example / .env.sample / .env.template は架空値を置く見本なので除く
+  // .env.exampleだけは架空値を置く見本なので除く
   // （.gitignore の !.env.example と docs/SECURITY.md の指示に合わせる）
-  /(^|\/)\.env(?:$|\.(?!example$|sample$|template$))/iu,
+  /(^|\/)\.env(?:$|\.(?!example$))/iu,
   /(^|\/)(?:credentials|token|tokens)\.json$/iu,
   /(^|\/)client_secret[^/]*\.json$/iu,
   /(^|\/)oauth-(?:client|token)[^/]*\.json$/iu,
@@ -69,13 +69,18 @@ const textExtensions = new Set([
   '.rs', '.sh', '.toml', '.ts', '.tsx', '.txt', '.yaml', '.yml',
 ]);
 
+const isScannableText = (file) => (
+  /(^|\/)\.env\.example$/iu.test(file) ||
+  textExtensions.has(extname(file).toLowerCase())
+);
+
 const secretPatterns = [
   ['秘密鍵', /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/u],
   ['GitHub token', /(?:ghp|gho|ghu|ghs|github_pat)_[A-Za-z0-9_]{20,}/u],
   ['Google API key', /AIza[0-9A-Za-z_-]{30,}/u],
   ['一般的なsecret key', /\bsk-[A-Za-z0-9_-]{20,}\b/u],
-  ['Windows利用者パス', /\b[A-Za-z]:\\Users\\[^\\\s]+/u],
-  ['macOS利用者パス', /\/Users\/[^/\s]+/u],
+  ['Windows利用者パス', /\b[A-Za-z]:[\\/]Users[\\/][^\\/\s]+/u],
+  ['macOS利用者パス', /(?<![A-Za-z]:)\/Users\/[^/\s]+/u],
   ['Linux利用者パス', /\/home\/[^/\s]+/u],
 ];
 
@@ -84,7 +89,7 @@ const markdownLinkPattern = /\[[^\]]*\]\(([^)]+)\)/gu;
 for (const file of trackedFiles) {
   const absolute = join(root, file);
   if (!existsSync(absolute) || !statSync(absolute).isFile()) continue;
-  if (!textExtensions.has(extname(file).toLowerCase())) continue;
+  if (!isScannableText(file)) continue;
 
   let text;
   try {

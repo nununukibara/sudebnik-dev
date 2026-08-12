@@ -28,9 +28,11 @@ AIと相談しながら、開発経験が少なくても「何を作るか」か
 | 5 | [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md) | 初参加時。目的と最終目標 |
 | 6 | [docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md) | 初参加時。合意済みの要件 |
 | 7 | [docs/RESOURCES.md](./docs/RESOURCES.md) | 初参加時。使える人・AI・ツール |
-| 8 | 関係する設計・検証文書と実コード | 作業内容に応じて |
+| 8 | [WORKLOG.md](./WORKLOG.md) | STATUSから参照された未完了項。中断時点と他AIの作業 |
+| 9 | [ROADMAP.md](./ROADMAP.md)・[docs/VERSIONING.md](./docs/VERSIONING.md) | 初参加時と、対象版・版分割を扱うとき |
+| 10 | 関係する設計・検証文書と実コード | 作業内容に応じて |
 
-**二度目以降は 2 のSTATUSだけで始められます。**規則や目的が変わったときだけ 3・5〜7 を読み直します。
+**二度目以降は2のSTATUSを入口に、7の現在の分担と、STATUSが指す8の未完了項を確認して始めます。**対象版を扱うときは6・9も照合します。規則や最終目標が変わったときは3・5を読み直します。
 
 **4のSECURITYだけは別です。**commitする前と公開する前には、毎回その「チェック」の節を見ます。一度読んで終わりにしません。
 
@@ -103,6 +105,10 @@ AIと相談しながら、開発経験が少なくても「何を作るか」か
 | 最初に | [AGENTS.md](./AGENTS.md) | AIが従う規則。これが無いと以降が効きません |
 | 次に | [docs/SECURITY.md](./docs/SECURITY.md) | **Gitへ入れてはいけないもの。事故が一番重いので先に渡します** |
 | 次に | [docs/PROJECT_BRIEF.md](./docs/PROJECT_BRIEF.md) | 埋めかけで構いません。空欄はAIが質問します |
+| 初回のリソース確認 | [docs/RESOURCES.md](./docs/RESOURCES.md) | 利用できる人・AI・ツールと現在の分担 |
+| 作業を再開するとき | [STATUS.md](./STATUS.md) | 現在地、次の一歩、中断中の作業 |
+| STATUSが未完了項を指すとき | [WORKLOG.md](./WORKLOG.md)の該当項 | 中断時点と、別AIが行った作業 |
+| 合意済み要件があるとき | [docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md) | 承認済み要件、対象版、受け入れ条件 |
 | 版の相談をするとき | [docs/VERSIONING.md](./docs/VERSIONING.md) | 版の分け方と正式版の判定 |
 | 検証の相談をするとき | [docs/TESTING.md](./docs/TESTING.md) | 確認の種類と完了の条件 |
 
@@ -160,7 +166,7 @@ Node.jsを利用できる場合、次を**公開の前とcommitの前に**実行
 node tools/check-template.mjs
 ```
 
-検査するもの: 文書間のリンク切れ、必須文書の有無、秘密値らしい文字列（GitHub・Googleのトークン、`sk-`で始まる鍵、秘密鍵のPEM）、個人PCの絶対パス、Gitへ入れてはいけないファイル名、LICENSEの有無。
+検査するもの: 文書間のリンク切れ、必須文書の有無、秘密値らしい文字列（GitHub・Googleのトークン、`sk-`で始まる鍵、秘密鍵のPEM）、個人PCの絶対パス、Gitへ入れてはいけないファイル名、LICENSEの有無、未記入欄の残存（警告）。
 
 **これは最後の網であって、[docs/SECURITY.md](./docs/SECURITY.md)の代わりにはなりません。**検査を通っても、実データや権利の分からない素材は自分で確認してください。
 
